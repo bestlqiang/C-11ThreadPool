@@ -119,11 +119,9 @@ int main()
 	{
 		std::this_thread::sleep_for(std::chrono::microseconds(1));
 	}
-
 	cout << "end" << endl;
 	
 	sola::active_logger = std::unique_ptr<sola::logger>(new sola::logger(sola::logger::log_level::debug));
-
 	sola::thread_pool thread_pool;
 
 	for (int i = 0; i < 5; i++)
