@@ -93,7 +93,7 @@ void priorityFunc()
 {
 	for (int i = 1; i < 4; ++i)
 	{
-		std::this_thread::sleep_for(std::chrono::seconds(1));
+		std::this_thread::sleep_for(std::chrono::seconds(1s));
 		LockGuard_Mutex lock(g_mutex);
 		std::cout << "priorityFunc() [" << i << "] at thread [ " << std::this_thread::get_id() << "] output" << std::endl;
 	}
@@ -112,10 +112,16 @@ void testFunc()
 
 }
 
-
-
 int main()
 {
+	int i = 0;
+	for (int i=0;i!=5000;i++)
+	{
+		std::this_thread::sleep_for(std::chrono::microseconds(1));
+	}
+
+	cout << "end" << endl;
+	
 	sola::active_logger = std::unique_ptr<sola::logger>(new sola::logger(sola::logger::log_level::debug));
 
 	sola::thread_pool thread_pool;
